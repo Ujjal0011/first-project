@@ -10,16 +10,48 @@
 </head>
 
 <body>
-    <div class="container justify-content-center mt-3">
-        <div class="row">
-            <div class="col-md-6">
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Headline</h1>
+                        <h1>User List</h1>
                     </div>
                     <div class="card-body">
-                        <h1>Hello, {{ $name }}!</h1>
-                        <a href="{{ url('user-list') }}">User List</a>
+                        <table class="table table-sm table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                </tr>
+                            </thead>
+                            @php
+                                $sl = 1;
+                            @endphp
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $sl++ }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}At</td>
+                                        <td>{{ $user->updated_at }}At</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
             </div>
